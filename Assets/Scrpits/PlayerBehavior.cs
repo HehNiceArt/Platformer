@@ -99,7 +99,6 @@ public class PlayerBehavior : MonoBehaviour
             {
                 Debug.Log("Press D key!");
             }
-            
             else
             {
                 Debug.Log("Press Right Arrow!");
