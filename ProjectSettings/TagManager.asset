@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -46,6 +47,9 @@ TagManager:
     locked: 0
   - name: Floor
     uniqueID: 4126259921
+    locked: 0
+  - name: Traps
+    uniqueID: 2909785411
     locked: 0
   - name: Wall
     uniqueID: 3224047403
