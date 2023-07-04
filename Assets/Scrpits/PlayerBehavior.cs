@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class PlayerBehavior : MonoBehaviour
     public Animator anim;
 
     public int CoinCount;
+
+    public int healthPoints;
+
+    public float shiftSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -127,6 +132,19 @@ public class PlayerBehavior : MonoBehaviour
         anim.SetFloat("Vertical", movementInput.y);
         //Debug.Log("MovementInput Y");
         anim.SetFloat("Speed", movementInput.sqrMagnitude);
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Debug.Log("Pressed Left Shift key!");
+            movementSpeed = shiftSpeed;
+            anim.speed = movementSpeed - 5;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            Debug.Log("Release Left Shift key!");
+            movementSpeed = 4;
+            anim.speed = movementSpeed - 3;
+        }
     }
 
     //Fixed update for physics calculations
@@ -136,12 +154,12 @@ public class PlayerBehavior : MonoBehaviour
         
     }
 
-
     //To get the Input System Clicks
     private void OnMove(InputValue inputValue)
     {
         //if press WASD =  to Vector 2 Values
         movementInput = inputValue.Get<Vector2>();
+
         
     }
 
@@ -152,11 +170,27 @@ public class PlayerBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Coin")) 
+        if (collision.gameObject.CompareTag("SpeedPowerUp")) 
+        {
+            //Destroy(collision.gameObject);
+            //CoinCount++;
+            Transform col = collision.transform;
+            col.transform.position = new Vector2(999, 999);
+            Debug.Log("Speed boost! \r\n Destroy speed power up");
+            Debug.Log("Initiate Coroutine");
+        }
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            CoinCount++;
+            Destroy(collision.gameObject);
+            Debug.Log("Coin +1 \r\n Destroy coin");
+        }
+        if (collision.gameObject.CompareTag("HealthPowerUp"))
         {
             Destroy(collision.gameObject);
-            CoinCount++;
-            Debug.Log("+1 coin");
+            Debug.Log("Destroy health power up");
         }
+
     }
+   
 }
