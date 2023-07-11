@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -163,7 +163,7 @@ public class PlayerBehavior : MonoBehaviour
         
     }
 
-    //On trigger - bool
+    //OnTrigger - bool
     //(Enter) - if player enters the collision area
     //(Exit) - if player is not detected within collision area
     //(Stay) - if player is within collision area
