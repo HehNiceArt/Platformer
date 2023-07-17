@@ -22,7 +22,6 @@ public class PlayerBehavior : MonoBehaviour
 
     public int healthPoints;
 
-    public float shiftSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -133,18 +132,6 @@ public class PlayerBehavior : MonoBehaviour
         //Debug.Log("MovementInput Y");
         anim.SetFloat("Speed", movementInput.sqrMagnitude);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            Debug.Log("Pressed Left Shift key!");
-            movementSpeed = shiftSpeed;
-            anim.speed = movementSpeed - 5;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            Debug.Log("Release Left Shift key!");
-            movementSpeed = 4;
-            anim.speed = movementSpeed - 3;
-        }
     }
 
     //Fixed update for physics calculations
@@ -160,7 +147,6 @@ public class PlayerBehavior : MonoBehaviour
         //if press WASD =  to Vector 2 Values
         movementInput = inputValue.Get<Vector2>();
 
-        
     }
 
     //OnTrigger - bool
