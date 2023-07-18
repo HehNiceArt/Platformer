@@ -28,7 +28,7 @@ public class PowerUp_Manager : MonoBehaviour
         if (speed)
         {
             player.movementSpeed += speedBoost;
-            player.anim.speed = player.movementSpeed - 7;
+            player.anim.speed = player.movementSpeed - 6;
             Debug.Log("Increase speed! \r\n Speed Boost Power Up consumed");
             StartCoroutine(BaseSpeed());
         }
